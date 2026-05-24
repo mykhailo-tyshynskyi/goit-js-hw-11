@@ -6,9 +6,8 @@ export let lightbox = new SimpleLightbox('.gallery-item a', {
   captionDelay: 250,
 });
 
-const main = document.querySelector('main')
-main.innerHTML=`<span class="loader isHiden"></span>
-<ul class="gallery"></ul>`;
+
+
 
 
 const container = document.querySelector('.gallery');
