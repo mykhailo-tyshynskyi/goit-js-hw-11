@@ -1,6 +1,5 @@
 import { getImagesByQuery } from './js/pixabay-api';
 import { createGallery } from './js/render-functions';
-import 'simplelightbox/dist/simple-lightbox.min.css';
 import { lightbox } from './js/render-functions';
 import iziToast from 'izitoast';
 import { clearGallery } from './js/render-functions';
@@ -9,7 +8,7 @@ import { hideLoader } from './js/render-functions';
 
 const form = document.querySelector('.form');
 const input = document.querySelector('[name="search-text"]');
-const container = document.querySelector('.gallery');
+
 
 form.addEventListener('submit', handleSearchSubmit);
 function handleSearchSubmit(event) {
@@ -18,6 +17,7 @@ function handleSearchSubmit(event) {
   showLoader();
   const query = input.value.trim();
   if (query === '') {
+    hideLoader()
     return;
   } else {
     getImagesByQuery(query)
@@ -25,10 +25,10 @@ function handleSearchSubmit(event) {
         if (data.length === 0) {
           throw new Error();
         }
-        const murkup = createGallery(data);
+        createGallery(data);
         hideLoader();
-        container.innerHTML = murkup;
-        lightbox.refresh();
+       
+       
       })
       .catch(err => {
         hideLoader();

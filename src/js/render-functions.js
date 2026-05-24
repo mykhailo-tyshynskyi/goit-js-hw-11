@@ -6,6 +6,13 @@ export let lightbox = new SimpleLightbox('.gallery-item a', {
   captionDelay: 250,
 });
 
+const main = document.querySelector('main')
+main.innerHTML=`<span class="loader isHiden"></span>
+<ul class="gallery"></ul>`;
+
+
+const container = document.querySelector('.gallery');
+
 export function createGallery(images) {
   const murkup = images
     .map(img => {
@@ -46,12 +53,12 @@ export function createGallery(images) {
     })
     .join('');
 
-  return murkup;
+   container.innerHTML = murkup;
+    lightbox.refresh();
 }
 
 export function clearGallery() {
-  const container = document.querySelector('.gallery');
-  container.innerHTML = '';
+   container.innerHTML = '';
 }
 
 export function showLoader() {
