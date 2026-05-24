@@ -11,13 +11,14 @@ const input = document.querySelector('[name="search-text"]');
 form.addEventListener('submit', handleSearchSubmit);
 function handleSearchSubmit(event) {
   event.preventDefault();
-  clearGallery();
-  showLoader();
+  
   const query = input.value.trim();
   if (query === '') {
     hideLoader();
     return;
   } else {
+    clearGallery();
+  showLoader();
     getImagesByQuery(query)
       .then(data => {
         if (data.length === 0) {
