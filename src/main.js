@@ -11,33 +11,33 @@ const input = document.querySelector('[name="search-text"]');
 form.addEventListener('submit', handleSearchSubmit);
 function handleSearchSubmit(event) {
   event.preventDefault();
-  
+
   const query = input.value.trim();
   if (query === '') {
-    hideLoader();
     return;
   } else {
     clearGallery();
-  showLoader();
+    showLoader();
     getImagesByQuery(query)
       .then(data => {
         if (data.length === 0) {
           throw new Error();
         }
-        hideLoader();
+        
         createGallery(data);
 
         event.target.reset();
       })
       .catch(err => {
-        hideLoader();
         iziToast.error({
           title: 'Error',
           message:
             'Sorry, there are no images matching your search query. Please try again!',
           position: 'center',
         });
+      })
+      .finally(() => {
+        hideLoader();
       });
-    
   }
 }
