@@ -50,7 +50,7 @@ export function createGallery(images) {
 }
 
 export function clearGallery() {
-  const container = document.querySelector('.container');
+  const container = document.querySelector('.gallery');
   container.innerHTML = '';
 }
 

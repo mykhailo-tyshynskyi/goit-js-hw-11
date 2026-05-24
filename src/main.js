@@ -9,7 +9,7 @@ import { hideLoader } from './js/render-functions';
 
 const form = document.querySelector('.form');
 const input = document.querySelector('[name="search-text"]');
-const container = document.querySelector('.container');
+const container = document.querySelector('.gallery');
 
 form.addEventListener('submit', handleSearchSubmit);
 function handleSearchSubmit(event) {

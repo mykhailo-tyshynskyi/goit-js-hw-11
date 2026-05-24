@@ -15,7 +15,7 @@ header {
   padding-bottom: 32px;
 }
 
-.container {
+.gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
