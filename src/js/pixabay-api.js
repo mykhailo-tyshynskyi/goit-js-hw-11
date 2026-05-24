@@ -20,5 +20,5 @@ export function getImagesByQuery(query) {
     .then(res => {
       return res.data;
     })
-    .catch((err) => {throw err});
+   
 }

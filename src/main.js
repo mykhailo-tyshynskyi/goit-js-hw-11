@@ -21,20 +21,21 @@ function handleSearchSubmit(event) {
     getImagesByQuery(query)
       .then(data => {
         if (data.total === 0) {
-          throw new Error();
+          iziToast.error({
+          title: 'Error',
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+          position: 'center',
+        });
         }
-        
         createGallery(data.hits);
 
         event.target.reset();
       })
       .catch(err => {
         iziToast.error({
-          title: 'Error',
-          message:
-            'Sorry, there are no images matching your search query. Please try again!',
-          position: 'center',
-        });
+      message: 'Something went wrong. Please try again later.',
+    });
       })
       .finally(() => {
         hideLoader();
