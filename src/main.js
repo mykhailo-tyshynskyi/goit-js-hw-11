@@ -20,11 +20,11 @@ function handleSearchSubmit(event) {
     showLoader();
     getImagesByQuery(query)
       .then(data => {
-        if (data.length === 0) {
+        if (data.total === 0) {
           throw new Error();
         }
         
-        createGallery(data);
+        createGallery(data.hits);
 
         event.target.reset();
       })
