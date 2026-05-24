@@ -1,6 +1,5 @@
 import { getImagesByQuery } from './js/pixabay-api';
 import { createGallery } from './js/render-functions';
-import { lightbox } from './js/render-functions';
 import iziToast from 'izitoast';
 import { clearGallery } from './js/render-functions';
 import { showLoader } from './js/render-functions';
@@ -9,7 +8,6 @@ import { hideLoader } from './js/render-functions';
 const form = document.querySelector('.form');
 const input = document.querySelector('[name="search-text"]');
 
-
 form.addEventListener('submit', handleSearchSubmit);
 function handleSearchSubmit(event) {
   event.preventDefault();
@@ -17,7 +15,7 @@ function handleSearchSubmit(event) {
   showLoader();
   const query = input.value.trim();
   if (query === '') {
-    hideLoader()
+    hideLoader();
     return;
   } else {
     getImagesByQuery(query)
@@ -25,10 +23,10 @@ function handleSearchSubmit(event) {
         if (data.length === 0) {
           throw new Error();
         }
-        createGallery(data);
         hideLoader();
-       
-       
+        createGallery(data);
+
+        event.target.reset();
       })
       .catch(err => {
         hideLoader();
@@ -39,6 +37,6 @@ function handleSearchSubmit(event) {
           position: 'center',
         });
       });
+    
   }
-  event.target.reset();
 }
