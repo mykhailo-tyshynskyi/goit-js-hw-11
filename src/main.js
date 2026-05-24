@@ -28,9 +28,10 @@ function handleSearchSubmit(event) {
           position: 'center',
         });
         }
+        else{
         createGallery(data.hits);
 
-        event.target.reset();
+        event.target.reset();}
       })
       .catch(err => {
         iziToast.error({
